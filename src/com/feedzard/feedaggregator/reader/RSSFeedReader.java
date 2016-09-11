@@ -3,6 +3,7 @@ package com.feedzard.feedaggregator.reader;
 import com.feedzard.feedaggregator.models.Feed;
 import com.feedzard.feedaggregator.models.FeedMessage;
 import com.feedzard.feedaggregator.parser.FeedParserSymbols;
+import com.feedzard.logging.Log;
 import org.jetbrains.annotations.Contract;
 
 import javax.xml.stream.XMLEventReader;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
 
 import static com.feedzard.feedaggregator.parser.FeedParserSymbols.*;
 
@@ -125,10 +127,10 @@ public class RSSFeedReader {
 
     @Contract("null -> fail; !null -> !null")
     public static RSSFeedReader getSafeInstance(String feedUrl) throws MalformedURLException {
-        if(feedUrl == null){
-            throw new MalformedURLException("Either the URL was not found or it was incorrectly passed");
-        }else
-        {
+        if (feedUrl == null) {
+            Log.writeLine(Level.SEVERE, "Malformed URL Exception");
+            throw new MalformedURLException("Malformed URL ENcountered.");
+        } else {
             return new RSSFeedReader(new URL(feedUrl));
         }
 

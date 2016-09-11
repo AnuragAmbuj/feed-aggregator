@@ -34,6 +34,15 @@ public class Feed {
         this.copyright = copyright;
         this.pubDate = pubDate;
     }
+    public Feed(Feed feed){
+        this.title = feed.getTitle();
+        this.link = feed.getLink();
+        this.description = feed.getDescription();
+        this.language = feed.getLanguage();
+        this.copyright = feed.getCopyright();
+        this.pubDate = feed.getPubDate();
+        this.entries = feed.getEntries();
+    }
 
     public String getTitle() {
         return title;

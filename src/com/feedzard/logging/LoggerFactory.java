@@ -11,7 +11,13 @@ import java.util.logging.Logger;
  */
 public class LoggerFactory {
         private static Logger logger = Logger.getLogger("FRLogger");
-        public static Logger getLogger(){
+        public static Logger getLogger()  {
+            logger.addHandler(new ConsoleHandler());
+            try {
+                logger.addHandler(new FileHandler("errors.log"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             return logger;
         }
     }

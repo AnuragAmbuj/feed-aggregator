@@ -1,6 +1,7 @@
 package test;
 
 import com.feedzard.collectors.links.BulkLinkWriter;
+import com.feedzard.feedaggregator.factory.IndiaFeedFactory;
 import com.feedzard.feedaggregator.models.Feed;
 import com.feedzard.feedaggregator.models.FeedMessage;
 import com.feedzard.feedaggregator.parser.RSSFeedParser;
@@ -16,7 +17,7 @@ import java.util.logging.Level;
 public class SamplePaserTest {
     public static void main(String args[]){
         try {
-            RSSFeedParser reader = RSSFeedParser.getSafeInstance("http://www.news18.com/rss/india.xml");
+            RSSFeedParser reader = RSSFeedParser.getSafeInstance(IndiaFeedFactory.INDIA_FEED_URL);
             Feed feed = reader.readFeed();
             BulkLinkWriter bulkLinkWriter = BulkLinkWriter.getBulkLinkWriterInstance(feed);
             for(FeedMessage message:feed.getMessages()){
