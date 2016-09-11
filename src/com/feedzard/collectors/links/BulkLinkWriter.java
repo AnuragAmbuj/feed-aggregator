@@ -33,7 +33,7 @@ public class BulkLinkWriter {
     public void writeFeedLinksToFLStore() throws Exception {
 
         if (feed == null || feed.getTitle().equals("")) {
-            //TODO
+            Log.writeLine(Level.SEVERE,"Null feed encountered");
         } else {
             PrintWriter printWriter = null;
             try {
