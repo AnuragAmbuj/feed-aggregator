@@ -17,8 +17,8 @@ import static java.util.logging.Level.FINE;
  */
 public class ImageURLExtractor {
 
-    public static String getImageURLFromFeedDescription(String feedLink) throws MalformedURLException {
-        String data[] = feedLink.split("/>");
+    public static String getImageURLFromFeedDescription(String feedDescription) throws MalformedURLException {
+        String data[] = feedDescription.split("/>");
         data[0] = data[0]+"/>";
         //System.out.println(data[0]);
         //System.out.println(data[1]);

@@ -121,6 +121,7 @@ public class RSSFeedReader {
         try {
             return feedUrl.openStream();
         } catch (IOException e) {
+            System.out.println("No connection/Connection Timed out");
             throw new RuntimeException(e);
         }
     }

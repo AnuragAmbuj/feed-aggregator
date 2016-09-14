@@ -13,9 +13,18 @@ import java.util.logging.Level;
 public class Log {
 
 
-    static final Logger _CURRENT_CONTEXT_LOGGER =LoggerFactory.getLogger();
+    static LoggerFactory loggerFactory = new LoggerFactory();
+    Logger logger;
+    public Log(){
+        try {
+            loggerFactory.setLogger(null);
+            logger = loggerFactory.getCurrentLogger();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     public static void writeLine(Level level,String text){
-        _CURRENT_CONTEXT_LOGGER.log(level,text);
+        new Log().logger.log(level,text);
     }
 
 }
