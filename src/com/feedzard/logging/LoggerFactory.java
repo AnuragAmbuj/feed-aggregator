@@ -1,23 +1,25 @@
 package com.feedzard.logging;
 
 import java.io.IOException;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.PrintStream;
+import java.util.logging.*;
 
 /**
  * Created by aambuj on 07-09-2016.
  */
 public class LoggerFactory {
-        private static Logger logger = Logger.getLogger("FRLogger");
-        public static Logger getLogger()  {
+
+        public static Logger CURRENT_LOGGER = Logger.getLogger(LoggerFactory.class.getName());
+        public Logger logger = Logger.getLogger("FRLogger");
+        public void setLogger(Logger logger) throws IOException {
+            if(logger == null)
+                this.logger = CURRENT_LOGGER;
+            else
+                this.logger = logger;
             logger.addHandler(new ConsoleHandler());
-            try {
-                logger.addHandler(new FileHandler("errors.log"));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            logger.addHandler(new FileHandler("errors.log"));
+        }
+        public Logger getCurrentLogger(){
             return logger;
         }
     }

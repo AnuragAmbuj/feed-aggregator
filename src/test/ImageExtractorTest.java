@@ -23,7 +23,7 @@ public class ImageExtractorTest {
         try {
             RSSFeedReader reader = RSSFeedReader.getSafeInstance(TechFeedFactory.TECH_FEED_URL);
             Feed feed = reader.readFeed();
-            FeedMessage message = feed.getMessages().get(1);
+            FeedMessage message = feed.getMessages().get(3);
             String imageUrl = ImageURLExtractor.getImageURLFromFeedDescription(message.getDescription());
             Image img = ResourceDecoder.decodeImageFromURL(new URL(imageUrl));
             ImageViewer.showImage(img);
